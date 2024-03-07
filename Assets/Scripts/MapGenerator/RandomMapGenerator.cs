@@ -241,7 +241,7 @@ public class BTMap
 
         foreach (MapNode node in roomNodes)
         {
-            RoomData rd = new RoomData(3,100,node.size); // 우선 방 크기를 3~6으로 지정
+            RoomData rd = new RoomData(StageManager.Instance.stageData.MinRoomSize,StageManager.Instance.stageData.MaxRoomSize,node.size); // 우선 방 크기를 3~6으로 지정
             rd.SetRoomDataOnRandomValue();
 
             node.SetRoomData(rd);

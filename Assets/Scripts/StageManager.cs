@@ -17,6 +17,7 @@ public class StageManager : MonoBehaviour
     [SerializeField]
     public GameObject defaultItemPrefab;
 
+
     public int padding = 5;
 
     public List<GameObject> rooms;

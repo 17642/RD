@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RoomIndicator : MonoBehaviour
 {
-    RoomData roomData;
+    public RoomData roomData;
     int padding;
 
     public void SetRoomData(RoomData roomData, int padding)

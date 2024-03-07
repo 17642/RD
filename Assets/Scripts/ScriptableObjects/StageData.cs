@@ -57,7 +57,7 @@ public class StageData : ScriptableObject
 
     public Vector2Int StageSize; //스테이지 및 방 설정
     public Vector2Int MaxNodeSize;
-    public Vector2Int MaxRoomSize;
+    public int MaxRoomSize;
     public int MinRoomSize;
 
     public int recursiveCount; // 방 생성 횟수

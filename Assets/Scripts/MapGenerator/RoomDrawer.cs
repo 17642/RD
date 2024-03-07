@@ -20,15 +20,16 @@ public class RoomDrawer : MonoBehaviour
 
     public void InitBTMap()
     {
+        RoomIndicators = new List<GameObject>();
         tilemap = StageManager.Instance.tileMap;
         tile = StageManager.Instance.tile;
 
         padding = StageManager.Instance.padding;
         map = new BTMap(StageManager.Instance.stageData.StageSize, StageManager.Instance.stageData.minRoomCount, StageManager.Instance.stageData.MinRoomSize, StageManager.Instance.stageData.recursiveCount);
 
-        for(int x = 0; x < 30 + padding*2; x++)
+        for(int x = 0; x < StageManager.Instance.stageData.StageSize.x + padding*2; x++)
         {
-            for (int y = 0; y < 30 + padding*2; y++)
+            for (int y = 0; y < StageManager.Instance.stageData.StageSize.y + padding*2; y++)
             {
                 tilemap.SetTile(new Vector3Int(x, y, 0), tile);
             }
