@@ -2,6 +2,7 @@ using JetBrains.Annotations;
 
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
@@ -352,6 +353,33 @@ public class BTMap
         }
         
     }
+
+    public void ClearTree(MapNode node)
+    {
+        if (node == null)
+        {
+            return;
+        }
+
+        // 왼쪽 하위 트리를 탐색하여 null 할당
+        ClearTree(node.left);
+
+        // 오른쪽 하위 트리를 탐색하여 null 할당
+        ClearTree(node.right);
+
+        // leaf 노드에 도달하면 null 할당
+        node.left = null;
+        node.right = null;
+    }
+
+    ~BTMap()
+    {
+        ClearTree(root);
+        root = null;
+        roomNodes = null;
+        roomDatas.Clear();
+        passages.Clear();
+    }
 }
 public class RandomMapGenerator : MonoBehaviour
 {
@@ -374,7 +402,6 @@ public class RandomMapGenerator : MonoBehaviour
     [SerializeField]
     int maxFloor;
     
-    int floor = 0;
 
     BTMap map;
     

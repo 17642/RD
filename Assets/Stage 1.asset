@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01773e06a2c92e243a8d2081baaaf767, type: 3}
+  m_Name: Stage 1
+  m_EditorClassIdentifier: 
+  stageName: Stage 1
+  description: "\uCCAB\uBC88\uC9F8\uB85C \uB3C4\uC804\uD558\uB294 \uC2A4\uD14C\uC774\uC9C0\uAD70\uC694.
+    \uC798 \uD574\uBD05\uC2DC\uB2E4!"
+  itemWeight: 0
+  enemyWeight: 0
+  maxEnemyNum: 5
+  maxItemNum: 10
+  canAppearShop: 0
+  canAppearHiddenRoom: 0
+  itemCanAppear: []
+  enemyCanAppear: []
+  specialFloors: []
+  StageSize: {x: 30, y: 30}
+  MaxNodeSize: {x: 10, y: 10}
+  MaxRoomSize: {x: 8, y: 8}
+  MinRoomSize: {x: 4, y: 4}
+  recursiveCount: 4
+  maxRoomCount: 10
+  minRoomCount: 5
+  stageType: 0
+  isWater: 0
+  isHot: 0
+  rewardCoin: 100
+  rewardItem:
+    startFloor: 0
+    endFloor: 0
+    levelMax: 0
+    levelMin: 0
+    target: {fileID: 0}
+    weight: 0

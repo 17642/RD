@@ -5,22 +5,26 @@ using UnityEngine.Tilemaps;
 
 public class RoomDrawer : MonoBehaviour
 {
-    [SerializeField]
+
     Tilemap tilemap;
-    [SerializeField]
     TileBase tile;
     BTMap map;
     [SerializeField]
     GameObject RoomIndicatorPrefab;
 
-    [SerializeField]
-    int padding = 5;
+    public List<GameObject> RoomIndicators;
+
+    int padding;
 
     bool setting = false;
 
     public void InitBTMap()
     {
-        map = new BTMap(new Vector2Int(30, 30), 6, 6, 4);
+        tilemap = StageManager.Instance.tileMap;
+        tile = StageManager.Instance.tile;
+
+        padding = StageManager.Instance.padding;
+        map = new BTMap(StageManager.Instance.stageData.StageSize, StageManager.Instance.stageData.minRoomCount, StageManager.Instance.stageData.MinRoomSize, StageManager.Instance.stageData.recursiveCount);
 
         for(int x = 0; x < 30 + padding*2; x++)
         {
@@ -96,7 +100,11 @@ public class RoomDrawer : MonoBehaviour
             RoomIndicator RI = RIP.GetComponent<RoomIndicator>();
             RI.SetRoomData(rd, padding);
             RI.SetPositionScale();
+
+            RoomIndicators.Add(RIP);
         }
+
+        StageManager.Instance.rooms = RoomIndicators;
     }
 
     public void Initialize()
@@ -106,9 +114,37 @@ public class RoomDrawer : MonoBehaviour
         DrawRoom();
     }
 
+    public void ResetMap()
+    {
+        map.roomDatas.Clear();
+        tilemap.ClearAllTiles();
+
+        foreach (GameObject rip in RoomIndicators)
+        {
+            if (rip == null) continue;
+            Destroy(rip);
+        }
+
+        RoomIndicators.Clear();
+
+
+        RoomIndicators = null;
+        map = null;
+    }
+
+    IEnumerator RCycle()
+    {
+        while (true)
+        {
+            Initialize();
+            yield return new WaitForSeconds(0.5f);
+            ResetMap();
+        }
+    }
+
 
     void Start()
     {
-        Initialize();
+        StartCoroutine(RCycle());
     }
 }
