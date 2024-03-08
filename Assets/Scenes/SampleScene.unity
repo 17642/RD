@@ -593,10 +593,15 @@ MonoBehaviour:
   tile: {fileID: 11400000, guid: 2578906e087026742a30e9ce156ef437, type: 2}
   defaultItemPrefab: {fileID: 7438109324653103891, guid: ec1b8a4c09f4abe429715d5dbffc6c92, type: 3}
   roomIndicatorPrefab: {fileID: 6480750428124027680, guid: d14e0fca4d58fb24a9246c909468aca9, type: 3}
+  StartLocation: {fileID: 8636230123493288423, guid: 2fb0247b02eccf745aa3ac2fb6efe8d9, type: 3}
+  EndLocation: {fileID: 6394964290553855814, guid: b04bc65401586fb4a94da6dd62488d2b, type: 3}
   padding: 5
   rooms: []
   rD: {fileID: 0}
   iG: {fileID: 0}
+  sEPL: {fileID: 0}
+  startPoint: {fileID: 0}
+  endPoint: {fileID: 0}
   currentFloor: 0
 --- !u!4 &1295474669
 Transform:

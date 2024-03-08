@@ -70,6 +70,8 @@ public class StageData : ScriptableObject
     public bool isWater; // 물이 있는 맵
     public bool isHot; // 더운 맵(물이 마그마로 대체)
 
+    public bool isUp; // 층 표기 방식 변경
+
     public int rewardCoin; //보상
     public StageObject rewardItem;
 

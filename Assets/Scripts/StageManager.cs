@@ -18,6 +18,10 @@ public class StageManager : MonoBehaviour
     public GameObject defaultItemPrefab;
     [SerializeField]
     public GameObject roomIndicatorPrefab;
+    [SerializeField]
+    public GameObject StartLocation;
+    [SerializeField]
+    public GameObject EndLocation;
 
     [SerializeField]
     public int padding = 5;
@@ -27,6 +31,10 @@ public class StageManager : MonoBehaviour
 
     public RoomDrawer rD;
     public ItemGenerator iG;
+    public StEPointLocator sEPL;
+
+    public GameObject startPoint;
+    public GameObject endPoint;
 
     public int currentFloor = 0;
 
@@ -35,18 +43,21 @@ public class StageManager : MonoBehaviour
         Instance = this;
         rD = gameObject.AddComponent<RoomDrawer>();
         iG = gameObject.AddComponent<ItemGenerator>();
+        sEPL = gameObject.AddComponent<StEPointLocator>();
     }
 
     void MapInit()
     {
         rD.Initialize();
         iG.Initalize();
+        sEPL.Init();
     }
 
     void MapEnd()
     {
         rD.ResetMap();
         iG.ResetItem();
+        sEPL.Rset();
     }
 
     public IEnumerator MIA()
