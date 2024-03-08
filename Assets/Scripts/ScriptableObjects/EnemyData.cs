@@ -55,6 +55,7 @@ public class EnemyData : ScriptableObject
 {
     public float skillWeight;
 
+    public Sprite sprite;
 
     public int code;
     public string enemyName;
