@@ -20,6 +20,7 @@ public class RoomDrawer : MonoBehaviour
 
     public void InitBTMap()
     {
+        RoomIndicatorPrefab = StageManager.Instance.roomIndicatorPrefab;
         RoomIndicators = new List<GameObject>();
         tilemap = StageManager.Instance.tileMap;
         tile = StageManager.Instance.tile;
@@ -146,6 +147,6 @@ public class RoomDrawer : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(RCycle());
+       // StartCoroutine(RCycle());
     }
 }

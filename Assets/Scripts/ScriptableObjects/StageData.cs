@@ -56,7 +56,7 @@ public class StageData : ScriptableObject
     public SpecialFloor[] specialFloors; // 특수 층
 
     public Vector2Int StageSize; //스테이지 및 방 설정
-    public Vector2Int MaxNodeSize;
+    //public Vector2Int MaxNodeSize;
     public int MaxRoomSize;
     public int MinRoomSize;
 

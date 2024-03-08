@@ -251,6 +251,8 @@ public class BTMap
             roomDatas.Add(node.roomData);
 
         }
+
+        Debug.Log("ROOM Count = " + roomDatas.Count);
     }
 
     public void SetRoomNodes(int minRoomCount, int maxResetCount)
@@ -269,7 +271,7 @@ public class BTMap
             mapNodes = root.FindBottomNode();
 
             // 재시도 횟수 증가
-            resetCount++;
+            resetCount=0;
         }
 
         // 최대 재시도 횟수를 초과하여 종료한 경우 경고 메시지 출력
@@ -280,6 +282,7 @@ public class BTMap
 
         // roomNodes 배열에 가장 아래에 있는 노드들을 할당
         roomNodes = mapNodes;
+        Debug.Log("Node Count = "+mapNodes.Length);
     }
 
     class Edge
@@ -371,7 +374,7 @@ public class BTMap
         node.left = null;
         node.right = null;
     }
-
+    
     ~BTMap()
     {
         ClearTree(root);
@@ -380,6 +383,7 @@ public class BTMap
         roomDatas.Clear();
         passages.Clear();
     }
+    
 }
 public class RandomMapGenerator : MonoBehaviour
 {
