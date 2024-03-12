@@ -87,7 +87,7 @@ public class EnemyGenerator : MonoBehaviour
         float itemWeight = 0f;
         foreach (StageObject set in StageManager.Instance.stageData.enemyCanAppear)
         {
-            if (set.startFloor >= StageManager.Instance.currentFloor && set.endFloor <= StageManager.Instance.currentFloor)
+            if (set.startFloor <= StageManager.Instance.currentFloor && set.endFloor >= StageManager.Instance.currentFloor)
             {
                 itemWeight += set.weight;
             }
@@ -99,7 +99,7 @@ public class EnemyGenerator : MonoBehaviour
 
         foreach (StageObject set in StageManager.Instance.stageData.enemyCanAppear)
         {
-            if (set.startFloor >= StageManager.Instance.currentFloor && set.endFloor <= StageManager.Instance.currentFloor)
+            if (set.startFloor <= StageManager.Instance.currentFloor && set.endFloor >= StageManager.Instance.currentFloor)
             {
                 if (itemnum - currentWeight < set.weight)
                 {

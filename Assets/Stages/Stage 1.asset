@@ -17,8 +17,8 @@ MonoBehaviour:
     \uC798 \uD574\uBD05\uC2DC\uB2E4!"
   itemWeight: 0.6
   enemyWeight: 0.7
-  maxEnemyNum: 5
-  maxItemNum: 10
+  maxEnemyNum: 10
+  maxItemNum: 15
   canAppearShop: 0
   canAppearHiddenRoom: 0
   itemCanAppear:
@@ -28,6 +28,12 @@ MonoBehaviour:
     levelMin: 0
     target: {fileID: 11400000, guid: c17faa0368ca25849aa963890ea6df0e, type: 2}
     weight: 1
+  - startFloor: 0
+    endFloor: 100
+    levelMax: 0
+    levelMin: 0
+    target: {fileID: 11400000, guid: d64e6152cf71aca40a936e4f6deb952b, type: 2}
+    weight: 0.3
   enemyCanAppear:
   - startFloor: 0
     endFloor: 100

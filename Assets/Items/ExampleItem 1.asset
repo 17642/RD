@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25594dbf512a93c48ba9bf6f1e15af62, type: 3}
+  m_Name: ExampleItem 1
+  m_EditorClassIdentifier: 
+  itemCode: 1
+  itemSprite: {fileID: -2413806693520163455, guid: 4d311a69ef8b24547bbb25bb37343d83, type: 3}
+  EquipSprite: {fileID: 0}
+  color: {r: 0.9339623, g: 0, b: 0, a: 1}
+  itemName: Example
+  description: "2\uBC88\uC9F8 \uC2E4\uD5D8\uC6A9 \uC544\uC774\uD15C."
+  itemTags:
+  - None
+  effects:
+  - effectType: 0
+    condition: 0
+    effectArea: 0
+    range: 0
+    value: 0
+    value2: 0
+  level: 0
+  price: 100
