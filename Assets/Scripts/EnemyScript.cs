@@ -19,9 +19,11 @@ public class EnemyScript : MonoBehaviour
     public bool initialized = false;
 
 
-    public void Init()
+    public void Init(int lev)
     {
         sprite = GetComponent<SpriteRenderer>();
+
+        currentLevel = lev;
 
         sprite.sprite = data.sprite;
 

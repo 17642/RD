@@ -42,7 +42,7 @@ public class ItemGenerator : MonoBehaviour
         {
             if (Random.Range(0f, 1.0f) <= StageManager.Instance.stageData.itemWeight)
             {
-                GameObject selectedRoom = StageManager.Instance.rooms[Random.Range(0, StageManager.Instance.rooms.Count - 1)];
+                GameObject selectedRoom = StageManager.Instance.rooms[Random.Range(0, StageManager.Instance.rooms.Count)];
                 Debug.Log("Room Selected #" + i);
                 RoomData rd = selectedRoom.GetComponent<RoomIndicator>().roomData;
                 Vector2Int position = new Vector2Int(Random.Range(rd.position.x, rd.position.x + rd.size.x), Random.Range(rd.position.y, rd.position.y + rd.size.y));

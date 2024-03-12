@@ -34,6 +34,7 @@ public class StageManager : MonoBehaviour
     public RoomDrawer rD;
     public ItemGenerator iG;
     public StEPointLocator sEPL;
+    public EnemyGenerator eG;
 
     public GameObject startPoint;
     public GameObject endPoint;
@@ -46,6 +47,7 @@ public class StageManager : MonoBehaviour
         rD = gameObject.AddComponent<RoomDrawer>();
         iG = gameObject.AddComponent<ItemGenerator>();
         sEPL = gameObject.AddComponent<StEPointLocator>();
+        eG = gameObject.AddComponent<EnemyGenerator>();
     }
 
     void MapInit()
@@ -53,6 +55,7 @@ public class StageManager : MonoBehaviour
         rD.Initialize();
         iG.Initalize();
         sEPL.Init();
+        eG.Initialize();
     }
 
     void MapEnd()
@@ -60,6 +63,7 @@ public class StageManager : MonoBehaviour
         rD.ResetMap();
         iG.ResetItem();
         sEPL.Rset();
+        eG.ResetEnemy();
     }
 
     public IEnumerator MIA()
