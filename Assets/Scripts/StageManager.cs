@@ -19,6 +19,8 @@ public class StageManager : MonoBehaviour
     [SerializeField]
     public GameObject roomIndicatorPrefab;
     [SerializeField]
+    public GameObject defaultEnemyPrefab;
+    [SerializeField]
     public GameObject StartLocation;
     [SerializeField]
     public GameObject EndLocation;

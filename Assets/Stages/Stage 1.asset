@@ -16,7 +16,7 @@ MonoBehaviour:
   description: "\uCCAB\uBC88\uC9F8\uB85C \uB3C4\uC804\uD558\uB294 \uC2A4\uD14C\uC774\uC9C0\uAD70\uC694.
     \uC798 \uD574\uBD05\uC2DC\uB2E4!"
   itemWeight: 0.6
-  enemyWeight: 0
+  enemyWeight: 0.7
   maxEnemyNum: 5
   maxItemNum: 10
   canAppearShop: 0
@@ -28,17 +28,24 @@ MonoBehaviour:
     levelMin: 0
     target: {fileID: 11400000, guid: c17faa0368ca25849aa963890ea6df0e, type: 2}
     weight: 1
-  enemyCanAppear: []
+  enemyCanAppear:
+  - startFloor: 0
+    endFloor: 100
+    levelMax: 1
+    levelMin: 10
+    target: {fileID: 11400000, guid: d70fc288b25c4d44fbbf49e3c47bbaac, type: 2}
+    weight: 1
   specialFloors: []
   StageSize: {x: 30, y: 30}
   MaxRoomSize: 15
   MinRoomSize: 3
   recursiveCount: 4
   maxRoomCount: 10
-  minRoomCount: 5
+  minRoomCount: 6
   stageType: 0
   isWater: 0
   isHot: 0
+  isUp: 0
   rewardCoin: 100
   rewardItem:
     startFloor: 0

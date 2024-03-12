@@ -265,6 +265,7 @@ public class BTMap
         // 최소 방 개수보다 적은 노드들을 찾거나 최대 재시도 횟수를 초과할 때까지 반복
         while (mapNodes.Length < minRoomCount && resetCount < maxResetCount)
         {
+            Debug.Log("Node 생성 재시도");
             // 추가 탐색을 위해 루트 노드에서부터 다시 탐색
             root = new MapNode(new Vector2Int(0,0),maxSize);//루트 맵 초기화
             Split(root);//분할
@@ -272,6 +273,8 @@ public class BTMap
 
             // 재시도 횟수 증가
             resetCount=0;
+
+            //InfiniteLoopDetector.Run();
         }
 
         // 최대 재시도 횟수를 초과하여 종료한 경우 경고 메시지 출력
@@ -325,6 +328,8 @@ public class BTMap
 
         while (visitedRoom.Count < roomDatas.Count) // 방 탐색 및 최소 경로 연결 시도
         {
+            //InfiniteLoopDetector.Run();
+
             RoomConnection minEdge = new RoomConnection(-1,-1,-1);
             float minWeight = float.MaxValue;
 
@@ -349,10 +354,20 @@ public class BTMap
             visitedRoom.Add(roomDatas[minEdge.endPos]);
             edges.Add(minEdge);
         }
-
+        
         foreach(RoomConnection edge in edges)
         {
             passages.Add(new RoomPassages(edge, roomDatas));
+        }
+
+        for(int i=0; i < 2; i++)
+        {
+            int st = Random.Range(0, roomDatas.Count);
+            int ed = Random.Range(0, roomDatas.Count);
+            RoomConnection randconnection = new RoomConnection(Random.Range(0,roomDatas.Count),Random.Range(0, roomDatas.Count),10);
+            roomDatas[st].passage.Add(randconnection);
+
+            passages.Add(new RoomPassages(randconnection, roomDatas));
         }
         
     }
