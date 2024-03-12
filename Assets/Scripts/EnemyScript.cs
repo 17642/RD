@@ -22,10 +22,12 @@ public class EnemyScript : MonoBehaviour
     public void Init(int lev)
     {
         sprite = GetComponent<SpriteRenderer>();
+        
 
         currentLevel = lev;
 
         sprite.sprite = data.sprite;
+        sprite.color = data.color;
 
         currentMaxHp = data.maxHealth + currentLevel * data.healthByLevel;
         currentDamage = data.damage + currentLevel * data.damageByLevel;

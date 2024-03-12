@@ -104,6 +104,7 @@ public class EnemyGenerator : MonoBehaviour
                 if (itemnum - currentWeight < set.weight)
                 {
                     selected = (EnemyData)set.target;
+                    randLevel = Random.Range(set.levelMin, set.levelMax);
                     break;
                 }
 
@@ -112,6 +113,7 @@ public class EnemyGenerator : MonoBehaviour
 
             selected = (EnemyData)set.target;
             randLevel = Random.Range(set.levelMin, set.levelMax);
+
         }
 
         enemyPrefab.GetComponent<EnemyScript>().data = selected;
