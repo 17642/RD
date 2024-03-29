@@ -41,6 +41,12 @@ MonoBehaviour:
     levelMin: 10
     target: {fileID: 11400000, guid: d70fc288b25c4d44fbbf49e3c47bbaac, type: 2}
     weight: 1
+  - startFloor: 0
+    endFloor: 100
+    levelMax: 5
+    levelMin: 10
+    target: {fileID: 11400000, guid: a0dbc829704831940bf4e3236ab4511b, type: 2}
+    weight: 0.3
   specialFloors: []
   StageSize: {x: 30, y: 30}
   MaxRoomSize: 15
