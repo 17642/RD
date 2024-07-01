@@ -71,14 +71,11 @@ public class EnemyScript : MonoBehaviour
     bool thereIsNoObject(int direction)
     {
         float rng = 1f;
-
-        RaycastHit2D hit2 = new RaycastHit2D();
-
         LayerMask lm = LayerMask.GetMask("User");
 
         Ray2D ray = new Ray2D((Vector2)transform.position, new Vector2(directionX[direction], directionY[direction]));
 
-        hit2 = Physics2D.Raycast(ray.origin, ray.direction, rng, lm);
+        RaycastHit2D hit2 = Physics2D.Raycast(ray.origin, ray.direction, rng, lm);
 
         if (hit2.collider == null)
         {
@@ -87,7 +84,7 @@ public class EnemyScript : MonoBehaviour
 
         if (hit2.collider.CompareTag("Item"))//아이템: 이동가능
         {
-            grabItem(hit2);
+            GrabItem(hit2);
             return true;
         }
         else if (hit2.collider.CompareTag("Player"))//플레이어: 이동불가능
@@ -108,7 +105,18 @@ public class EnemyScript : MonoBehaviour
         return false;
     }
 
-    void grabItem(RaycastHit2D hit)//자동 줍기
+    bool CanAttack()
+    {
+
+
+        return false;
+    }
+
+    bool TryUseSkill()
+    {
+        return false;
+    }
+    void GrabItem(RaycastHit2D hit)//자동 줍기
     {
         //무시하고 지나가기
     }

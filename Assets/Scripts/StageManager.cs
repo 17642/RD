@@ -41,6 +41,8 @@ public class StageManager : MonoBehaviour
 
     public int currentFloor = 0;
 
+    public bool stageEnd = false;
+
     private void Awake()
     {
         Instance = this;
@@ -56,6 +58,8 @@ public class StageManager : MonoBehaviour
         iG.Initalize();
         sEPL.Init();
         eG.Initialize();
+
+
     }
 
     void MapEnd()
@@ -75,14 +79,26 @@ public class StageManager : MonoBehaviour
             MapEnd();
         }
     }
+
+    void stageStartRoutine() { 
+    }
+
+
     void Start()
     {
-        StartCoroutine(MIA());
+        MapInit();//1Â÷ ¸Ê »ý¼º
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (stageEnd)
+        {
+            stageEnd = false;
+            MapEnd();
+            currentFloor++;
+            MapInit();
+        }
     }
 }
