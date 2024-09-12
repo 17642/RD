@@ -4,9 +4,16 @@ using UnityEngine;
 
 public class EnemyScript : MonoBehaviour
 {
+    [SerializeField]
+    int blockSize = 1;
+    [SerializeField]
+    Vector2 Zero = new Vector2(0.5f, 0.5f);
+
     public EnemyData data;
 
     SpriteRenderer sprite;
+
+    public Vector2Int pos;
 
     public float currentMaxHp;
     public float currentDamage;
@@ -44,29 +51,30 @@ public class EnemyScript : MonoBehaviour
 
         currentHP = currentMaxHp;
 
+        pos.x = (int)(transform.localPosition.x - 0.5);
+        pos.y = (int)(transform.localPosition.y - 0.5);
+
         initialized = true;
 
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     void MoveToLocation(int direction)
     {
         if (thereIsNoObject(direction))
         {
-            StartCoroutine(Move(new Vector2(transform.position.x + directionX[direction], transform.position.y + directionY[direction])));
+
+            Vector2 target = GetPositionToPN(new Vector2Int(pos.x + directionX[direction], pos.y + directionY[direction]));
+            pos.x += directionX[direction];
+            pos.y += directionY[direction];
+            StartCoroutine(Move(target));
         }
 
         usableturn--;
+    }
+
+    Vector2 GetPositionToPN(Vector2Int position)
+    {
+        return new Vector2(position.x*blockSize+Zero.x, position.y*blockSize+ Zero.y);
     }
     bool thereIsNoObject(int direction)
     {
@@ -128,19 +136,17 @@ public class EnemyScript : MonoBehaviour
 
     void handleTrap(RaycastHit2D hit)
     {
-
+        //못느터는 함정을 무시하고 지나감
     }
-    IEnumerator Move(Vector2 Destination)
+    IEnumerator Move(Vector2 destination)
     {
         moving = true;
-        while (((Vector2)transform.position - Destination).magnitude > 0.01f)
+        while (Vector2.Distance(transform.position, destination) > 0.01f)
         {
-            Vector3 newD = (Vector3)Destination;
-            transform.position += (transform.position - newD).normalized * movespeed * Time.deltaTime;
+            transform.position = Vector2.Lerp(transform.position, destination, movespeed * Time.deltaTime);
             yield return null;
-
         }
+        transform.position = destination;
         moving = false;
-        yield return null;
     }
 }

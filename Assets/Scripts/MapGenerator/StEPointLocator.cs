@@ -77,23 +77,19 @@ public class StEPointLocator : MonoBehaviour
 
     public bool ThereIsItem(Vector3Int pos)
     {
-        // 해당 위치에서 겹치는 모든 collider를 가져옵니다.
         Collider2D[] colliders = Physics2D.OverlapPointAll(tilemap.GetCellCenterWorld(pos));
 
-        // 가져온 colliders를 반복하여 아이템이 있는지 확인합니다.
         foreach (Collider2D collider in colliders)
         {
-            // collider에 연결된 GameObject를 확인합니다.
+
             GameObject obj = collider.gameObject;
 
-            // 아이템인지 확인합니다. 만약 아이템이라면 true를 반환합니다.
             if (obj.CompareTag("Item") || obj.CompareTag("Location"))
             {
                 return true;
             }
         }
 
-        // 아이템이 없는 경우에는 false를 반환합니다.
         return false;
     }
 }

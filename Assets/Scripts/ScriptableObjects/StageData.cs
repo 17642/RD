@@ -41,6 +41,8 @@ public class StageData : ScriptableObject
     public string stageName; // 스테이지 이름
     public string description; //설명
 
+    public int EndFloor; //목표 층
+
     public float itemWeight;//아이템 생성 빈도
     public float enemyWeight;//적 생성 빈도
 

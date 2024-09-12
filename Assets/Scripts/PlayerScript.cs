@@ -7,12 +7,19 @@ using UnityEngine;
 
 public class PlayerScript : MonoBehaviour
 {
+    [SerializeField]
+    int blockSize = 1;
+    [SerializeField]
+    Vector2 Zero = new Vector2(0.5f, 0.5f);
+
     public float moveRange = 1.00f;
     public int usableturn = 1;
 
     public int movespeed = 3;
 
     public bool moving = false;
+
+    public Vector2Int pos;
 
     public int[] directionX = { -1, 0, 1, 1, 1, 0, -1, -1 };
     public int[] directionY = { 1, 1, 1, 0, -1, -1, -1, 0 };
@@ -22,7 +29,8 @@ public class PlayerScript : MonoBehaviour
     //  6   5   4
     void Start()
     {
-        
+        pos.x = (int)(transform.localPosition.x - 0.5);
+        pos.y = (int)(transform.localPosition.y - 0.5);
     }
 
     // Update is called once per frame
@@ -44,9 +52,9 @@ public class PlayerScript : MonoBehaviour
                 {
                     MoveToLocation(3);
                 }
-                else if (!Input.GetKeyDown(KeyCode.A))
+                else if (Input.GetKeyDown(KeyCode.A))
                 {
-                    MoveToLocation(6);
+                    MoveToLocation(7);
                 }
             }
             else
@@ -63,9 +71,9 @@ public class PlayerScript : MonoBehaviour
                 {
                     MoveToLocation(4);
                 }
-                else if (!Input.GetKeyDown(KeyCode.A))
+                else if (Input.GetKeyDown(KeyCode.A))
                 {
-                    MoveToLocation(7);
+                    MoveToLocation(0);
                 }
             }
         }
@@ -80,10 +88,18 @@ public class PlayerScript : MonoBehaviour
     {
         if (thereIsNoObject(direction))
         {
-            StartCoroutine(Move(new Vector2(transform.position.x + directionX[direction], transform.position.y + directionY[direction])));
+            Vector2 target = GetPositionToPN(new Vector2Int(pos.x + directionX[direction], pos.y + directionY[direction]));
+            pos.x += directionX[direction];
+            pos.y += directionY[direction];
+            StartCoroutine(Move(target));
         }
 
-        usableturn--;
+        
+    }
+
+    Vector2 GetPositionToPN(Vector2Int position)
+    {
+        return new Vector2(position.x * blockSize + Zero.x, position.y * blockSize + Zero.y);
     }
     bool thereIsNoObject(int direction)
     {
@@ -96,6 +112,7 @@ public class PlayerScript : MonoBehaviour
         Ray2D ray = new Ray2D((Vector2)transform.position, new Vector2(directionX[direction],directionY[direction]));
 
         hit2=Physics2D.Raycast(ray.origin,ray.direction,rng,lm);
+        //hit2 = Physics2D.Raycast(ray.origin, ray.direction, rng);
 
         if (hit2.collider == null)
         {
@@ -136,17 +153,16 @@ public class PlayerScript : MonoBehaviour
     {
 
     }
-    IEnumerator Move(Vector2 Destination)
+    IEnumerator Move(Vector2 destination)
     {
+        usableturn--;
         moving = true;
-        while (((Vector2)transform.position - Destination).magnitude > 0.01f)
+        while (Vector2.Distance(transform.position, destination) > 0.01f)
         {
-            Vector3 newD = (Vector3)Destination;
-            transform.position+=(transform.position- newD).normalized*movespeed*Time.deltaTime;
+            transform.position = Vector2.Lerp(transform.position, destination, movespeed * Time.deltaTime);
             yield return null;
-
         }
+        transform.position = destination;
         moving = false;
-        yield return null;
     }
 }

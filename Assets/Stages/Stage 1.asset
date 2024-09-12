@@ -15,6 +15,7 @@ MonoBehaviour:
   stageName: Stage Test
   description: "\uCCAB\uBC88\uC9F8\uB85C \uB3C4\uC804\uD558\uB294 \uC2A4\uD14C\uC774\uC9C0\uAD70\uC694.
     \uC798 \uD574\uBD05\uC2DC\uB2E4!"
+  EndFloor: 3
   itemWeight: 0.6
   enemyWeight: 0.7
   maxEnemyNum: 10
