@@ -75,7 +75,7 @@ public class StageManager : MonoBehaviour
         while (true)
         {
             MapInit();
-            yield return new WaitForSeconds(4.5f);
+            yield return new WaitForSeconds(1.5f);
             MapEnd();
         }
     }
@@ -86,7 +86,8 @@ public class StageManager : MonoBehaviour
 
     void Start()
     {
-        MapInit();//1Â÷ ¸Ê »ý¼º
+        MapInit();//1ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+        //StartCoroutine(MIA());
         
     }
 

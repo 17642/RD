@@ -98,7 +98,7 @@ public class RoomDrawer : MonoBehaviour
             }
 
             GameObject RIP = Instantiate(RoomIndicatorPrefab);
-            //·ë ÀÎµðÄÉÀÌÅÍ ÇÁ¸®ÆÕ Ãß°¡ ¿¹Á¤: RoomData
+            //ï¿½ï¿½ ï¿½Îµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½ ï¿½ï¿½ï¿½ï¿½: RoomData
             RoomIndicator RI = RIP.GetComponent<RoomIndicator>();
             RI.SetRoomData(rd, padding);
             RI.SetPositionScale();
@@ -147,6 +147,6 @@ public class RoomDrawer : MonoBehaviour
 
     void Start()
     {
-       // StartCoroutine(RCycle());
+        //StartCoroutine(RCycle());
     }
 }
