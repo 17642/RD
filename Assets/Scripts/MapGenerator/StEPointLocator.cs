@@ -69,7 +69,7 @@ public class StEPointLocator : MonoBehaviour
 
     }
 
-    public void Rset()//ÀÓ½Ã ¸®¼Â ÇÔ¼ö
+    public void Rset()//ìž„ì‹œ ë¦¬ì…‹ í•¨ìˆ˜
     {
         Destroy(StageManager.Instance.startPoint);
         Destroy(StageManager.Instance.endPoint);

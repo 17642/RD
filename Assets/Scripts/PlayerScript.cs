@@ -119,17 +119,17 @@ public class PlayerScript : MonoBehaviour
             return true;
         }
 
-        if (hit2.collider.CompareTag("Item"))//¾ÆÀÌÅÛ: ÀÌµ¿°¡´É
+        if (hit2.collider.CompareTag("Item"))//ì•„ì´í…œ: ì´ë™ê°€ëŠ¥
         {
             grabItem(hit2);
             return true;
-        }else if (hit2.collider.CompareTag("Enemy"))//Àû: ÀÌµ¿ºÒ°¡´É
+        }else if (hit2.collider.CompareTag("Enemy"))//ì : ì´ë™ë¶ˆê°€ëŠ¥
         {
             moveToEnemy(hit2);
-        }else if (hit2.collider.CompareTag("Ground"))//¶¥: ÀÌµ¿°¡´É
+        }else if (hit2.collider.CompareTag("Ground"))//ë•…: ì´ë™ê°€ëŠ¥
         {
             return true;
-        }else if (hit2.collider.CompareTag("Trap"))//ÇÔÁ¤: ÀÌµ¿°¡´É
+        }else if (hit2.collider.CompareTag("Trap"))//í•¨ì •: ì´ë™ê°€ëŠ¥
         {
             handleTrap(hit2);
             return true;
@@ -139,12 +139,12 @@ public class PlayerScript : MonoBehaviour
         return false;
     }
 
-    void grabItem(RaycastHit2D hit)//ÀÚµ¿ Áİ±â
+    void grabItem(RaycastHit2D hit)//ìë™ ì¤ê¸°
     {
 
     }
 
-    void moveToEnemy(RaycastHit2D hit)//ÀÚµ¿ °ø°İ
+    void moveToEnemy(RaycastHit2D hit)//ìë™ ê³µê²©
     {
 
     }

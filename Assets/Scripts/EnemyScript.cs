@@ -90,20 +90,20 @@ public class EnemyScript : MonoBehaviour
             return true;
         }
 
-        if (hit2.collider.CompareTag("Item"))//¾ÆÀÌÅÛ: ÀÌµ¿°¡´É
+        if (hit2.collider.CompareTag("Item"))//ì•„ì´í…œ: ì´ë™ê°€ëŠ¥
         {
             GrabItem(hit2);
             return true;
         }
-        else if (hit2.collider.CompareTag("Player"))//ÇÃ·¹ÀÌ¾î: ÀÌµ¿ºÒ°¡´É
+        else if (hit2.collider.CompareTag("Player"))//í”Œë ˆì´ì–´: ì´ë™ë¶ˆê°€ëŠ¥
         {
             moveToEnemy(hit2);
         }
-        else if (hit2.collider.CompareTag("Ground"))//¶¥: ÀÌµ¿°¡´É
+        else if (hit2.collider.CompareTag("Ground"))//ë•…: ì´ë™ê°€ëŠ¥
         {
             return true;
         }
-        else if (hit2.collider.CompareTag("Trap"))//ÇÔÁ¤: ÀÌµ¿°¡´É
+        else if (hit2.collider.CompareTag("Trap"))//í•¨ì •: ì´ë™ê°€ëŠ¥
         {
             handleTrap(hit2);
             return true;
@@ -124,19 +124,19 @@ public class EnemyScript : MonoBehaviour
     {
         return false;
     }
-    void GrabItem(RaycastHit2D hit)//ÀÚµ¿ Áİ±â
+    void GrabItem(RaycastHit2D hit)//ìë™ ì¤ê¸°
     {
-        //¹«½ÃÇÏ°í Áö³ª°¡±â
+        //ë¬´ì‹œí•˜ê³  ì§€ë‚˜ê°€ê¸°
     }
 
-    void moveToEnemy(RaycastHit2D hit)//ÀÚµ¿ °ø°İ
+    void moveToEnemy(RaycastHit2D hit)//ìë™ ê³µê²©
     {
 
     }
 
     void handleTrap(RaycastHit2D hit)
     {
-        //¸ø´ÀÅÍ´Â ÇÔÁ¤À» ¹«½ÃÇÏ°í Áö³ª°¨
+        //ëª»ëŠí„°ëŠ” í•¨ì •ì„ ë¬´ì‹œí•˜ê³  ì§€ë‚˜ê°
     }
     IEnumerator Move(Vector2 destination)
     {

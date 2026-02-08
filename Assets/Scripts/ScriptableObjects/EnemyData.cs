@@ -48,7 +48,7 @@ public class DropItem
 
 public enum EnemyBehaviorType
 {
-    ±âº», µ¹°İ, µµÁÖ, ÀÌµ¿ºÒ°¡
+    ê¸°ë³¸, ëŒê²©, ë„ì£¼, ì´ë™ë¶ˆê°€
 }
 [CreateAssetMenu(fileName = "new Enemy", menuName = "EnemyData")]
 public class EnemyData : ScriptableObject

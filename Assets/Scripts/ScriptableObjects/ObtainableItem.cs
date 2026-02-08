@@ -81,7 +81,7 @@ public class ObtainableItem : ScriptableObject
     public int itemCode;
 
     public Sprite itemSprite;
-    [Description("¹Ì»ç¿ë")]
+    [Description("ë¯¸ì‚¬ìš©")]
     public Sprite EquipSprite;
     public Color color;
 
@@ -92,8 +92,8 @@ public class ObtainableItem : ScriptableObject
     public string[] itemTags;
 
     public List<ItemEffect> effects = new List<ItemEffect>();
-    [Description("-1ÀÎ °æ¿ì Á¦ÇÑ ¾øÀ½")]
-    public int level;//-1ÀÎ °æ¿ì Á¦ÇÑ ¾øÀ½
+    [Description("-1ì¸ ê²½ìš° ì œí•œ ì—†ìŒ")]
+    public int level;//-1ì¸ ê²½ìš° ì œí•œ ì—†ìŒ
 
     public int price;
 

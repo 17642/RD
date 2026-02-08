@@ -1,7 +1,7 @@
 using UnityEngine;
 using System;
 
-/// <summary> ¹«ÇÑ ·çÇÁ °Ë»ç ¹× ¹æÁö(¿¡µğÅÍ Àü¿ë) </summary>
+/// <summary> ë¬´í•œ ë£¨í”„ ê²€ì‚¬ ë° ë°©ì§€(ì—ë””í„° ì „ìš©) </summary>
 public static class InfiniteLoopDetector
 {
     private static string prevPoint = "";

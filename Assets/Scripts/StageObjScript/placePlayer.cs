@@ -16,7 +16,7 @@ public class placePlayer : MonoBehaviour
         
         yield return new WaitForSeconds(placeWaitTime);
         getPlayerCurrentData();
-        Instantiate(playerPrefab,transform.position,transform.rotation);//ÇÃ·¹ÀÌ¾î »ı¼º
+        Instantiate(playerPrefab,transform.position,transform.rotation);//í”Œë ˆì´ì–´ ìƒì„±
         Destroy(gameObject);
 
     }

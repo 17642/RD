@@ -46,7 +46,7 @@ public class RoomDrawer : MonoBehaviour
         {
             
 
-            bool udown = Random.Range(0, 1) == 0 ? true : false;
+            bool udown = Random.Range(0, 2) == 0 ? true : false;
 
             Vector2Int corner = udown ? new Vector2Int(pass.startPos.x, pass.endPos.y) : new Vector2Int(pass.endPos.x, pass.startPos.y);
 
@@ -98,7 +98,7 @@ public class RoomDrawer : MonoBehaviour
             }
 
             GameObject RIP = Instantiate(RoomIndicatorPrefab);
-            //�� �ε������� ������ �߰� ����: RoomData
+            //Initialize Room Indicator with RoomData
             RoomIndicator RI = RIP.GetComponent<RoomIndicator>();
             RI.SetRoomData(rd, padding);
             RI.SetPositionScale();

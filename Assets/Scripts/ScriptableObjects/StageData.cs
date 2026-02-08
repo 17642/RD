@@ -20,7 +20,7 @@ public class SpecialFloor
 {
     public enum AppearType
     {
-        EACHFLOOR, SELECTFLOOR //°¢ NÃş¸¶´Ù , Ãş ¼±ÅÃ
+        EACHFLOOR, SELECTFLOOR //ê° Nì¸µë§ˆë‹¤ , ì¸µ ì„ íƒ
     }
     public enum FloorType
     {
@@ -38,16 +38,16 @@ public class SpecialFloor
 [CreateAssetMenu(fileName = "New Stage", menuName = "StageData")]
 public class StageData : ScriptableObject
 {
-    public string stageName; // ½ºÅ×ÀÌÁö ÀÌ¸§
-    public string description; //¼³¸í
+    public string stageName; // ìŠ¤í…Œì´ì§€ ì´ë¦„
+    public string description; //ì„¤ëª…
 
-    public int EndFloor; //¸ñÇ¥ Ãş
+    public int EndFloor; //ëª©í‘œ ì¸µ
 
-    public float itemWeight;//¾ÆÀÌÅÛ »ı¼º ºóµµ
-    public float enemyWeight;//Àû »ı¼º ºóµµ
+    public float itemWeight;//ì•„ì´í…œ ìƒì„± ë¹ˆë„
+    public float enemyWeight;//ì  ìƒì„± ë¹ˆë„
 
-    public int maxEnemyNum; // ÃÖ´ë Àû ¼ö
-    public int maxItemNum; // ÃÖ´ë ¾ÆÀÌÅÛ ¼ö
+    public int maxEnemyNum; // ìµœëŒ€ ì  ìˆ˜
+    public int maxItemNum; // ìµœëŒ€ ì•„ì´í…œ ìˆ˜
 
     public bool canAppearShop;
     public bool canAppearHiddenRoom;
@@ -55,26 +55,26 @@ public class StageData : ScriptableObject
     public StageObject[] itemCanAppear;
     public StageObject[] enemyCanAppear; 
 
-    public SpecialFloor[] specialFloors; // Æ¯¼ö Ãş
+    public SpecialFloor[] specialFloors; // íŠ¹ìˆ˜ ì¸µ
 
-    public Vector2Int StageSize; //½ºÅ×ÀÌÁö ¹× ¹æ ¼³Á¤
+    public Vector2Int StageSize; //ìŠ¤í…Œì´ì§€ ë° ë°© ì„¤ì •
     //public Vector2Int MaxNodeSize;
     public int MaxRoomSize;
     public int MinRoomSize;
 
-    public int recursiveCount; // ¹æ »ı¼º È½¼ö
+    public int recursiveCount; // ë°© ìƒì„± íšŸìˆ˜
 
-    public int maxRoomCount; //ÃÖ´ë/ÃÖ¼Ò ¹æ ¼ö
+    public int maxRoomCount; //ìµœëŒ€/ìµœì†Œ ë°© ìˆ˜
     public int minRoomCount;
 
-    public int stageType; // ¸Ê Å¸ÀÔ(»ö»ó º¯°æ ¿¹Á¤)
+    public int stageType; // ë§µ íƒ€ì…(ìƒ‰ìƒ ë³€ê²½ ì˜ˆì •)
 
-    public bool isWater; // ¹°ÀÌ ÀÖ´Â ¸Ê
-    public bool isHot; // ´õ¿î ¸Ê(¹°ÀÌ ¸¶±×¸¶·Î ´ëÃ¼)
+    public bool isWater; // ë¬¼ì´ ìˆëŠ” ë§µ
+    public bool isHot; // ë”ìš´ ë§µ(ë¬¼ì´ ë§ˆê·¸ë§ˆë¡œ ëŒ€ì²´)
 
-    public bool isUp; // Ãş Ç¥±â ¹æ½Ä º¯°æ
+    public bool isUp; // ì¸µ í‘œê¸° ë°©ì‹ ë³€ê²½
 
-    public int rewardCoin; //º¸»ó
+    public int rewardCoin; //ë³´ìƒ
     public StageObject rewardItem;
 
 }

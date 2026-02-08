@@ -9,13 +9,13 @@ using UnityEngine;
 
 public class MapNode
 {
-    public Vector2Int position;//À§Ä¡(Ã³À½¿£ 0,0) / ÁÂ»ó´Ü ±âÁØ
-    public Vector2Int size; // Å©±â
+    public Vector2Int position;//ìœ„ì¹˜(ì²˜ìŒì—” 0,0) / ì¢Œìƒë‹¨ ê¸°ì¤€
+    public Vector2Int size; // í¬ê¸°
 
-    public MapNode left;//¿¬°áµÈ ³ëµå
+    public MapNode left;//ì—°ê²°ëœ ë…¸ë“œ
     public MapNode right;
 
-    public RoomData roomData;//¹æ Á¤º¸(¹æÀÌ ÀÖÀ» °æ¿ì. ¾øÀ» °æ¿ì¿¡´Â Null)
+    public RoomData roomData;//ë°© ì •ë³´(ë°©ì´ ìˆì„ ê²½ìš°. ì—†ì„ ê²½ìš°ì—ëŠ” Null)
 
     public MapNode(Vector2Int pos, Vector2Int size)
     {
@@ -34,16 +34,16 @@ public class MapNode
     {
         if(node == null)
         {
-            //Á¸ÀçÇÏÁö ¾Ê´Â ³ëµåÀÏ °æ¿ì Á¾·á
+            //ì¡´ì¬í•˜ì§€ ì•ŠëŠ” ë…¸ë“œì¼ ê²½ìš° ì¢…ë£Œ
             return;
         }
 
         if(node.left==null && node.right == null)
         {
-            mapNodes.Add(node);//ÀÚ½ÄÀÌ ¾øÀ» °æ¿ì ³ëµå ¸®½ºÆ®¿¡ Ãß°¡
+            mapNodes.Add(node);//ìì‹ì´ ì—†ì„ ê²½ìš° ë…¸ë“œ ë¦¬ìŠ¤íŠ¸ì— ì¶”ê°€
         }
 
-        FindBottomNodeDFS(node.left, mapNodes);//ÀÚ½ÄÀÌ ÀÖÀ» °æ¿ì ÇÏÀ§ ÀÚ½Ä Å½»ö
+        FindBottomNodeDFS(node.left, mapNodes);//ìì‹ì´ ìˆì„ ê²½ìš° í•˜ìœ„ ìì‹ íƒìƒ‰
         FindBottomNodeDFS(node.right, mapNodes);
     }
 
@@ -60,7 +60,7 @@ public class MapNode
 
         foreach(MapNode node in mapNodes)
         {
-            if (node.size.x >= 6 && node.size.y >= 6) // ¿ì¼± ÃÖ¼Ò ³ëµå Å©±â¸¦ 6À¸·Î ÁöÁ¤
+            if (node.size.x >= 6 && node.size.y >= 6) // ìš°ì„  ìµœì†Œ ë…¸ë“œ í¬ê¸°ë¥¼ 6ìœ¼ë¡œ ì§€ì •
             {
                 vaildNode.Add(node);
             }
@@ -94,21 +94,21 @@ public class RoomData
     }
 
     public Vector2Int position;
-    public Vector2Int size; //¹æ À§Ä¡ ¹× Å©±â. ³ëµå¿¡ µû¶ó »ó´ëÀûÀ¸·Î ±¸¼º
+    public Vector2Int size; //ë°© ìœ„ì¹˜ ë° í¬ê¸°. ë…¸ë“œì— ë”°ë¼ ìƒëŒ€ì ìœ¼ë¡œ êµ¬ì„±
 
-    public List<RoomConnection> passage; // ¿¬°á ¹è¿­
-    public RoomType type; // ¹æ Å¸ÀÔ
+    public List<RoomConnection> passage; // ì—°ê²° ë°°ì—´
+    public RoomType type; // ë°© íƒ€ì…
     
 
-    public RoomData(int roomMinimumSize, int roomMaximumSize, Vector2Int nodeSize)//ºÎ¸ğ °ø°£ ±â¹İÀ¸·Î ¹æ °ø°£ ·£´ıÇÏ°Ô »ı¼º
+    public RoomData(int roomMinimumSize, int roomMaximumSize, Vector2Int nodeSize)//ë¶€ëª¨ ê³µê°„ ê¸°ë°˜ìœ¼ë¡œ ë°© ê³µê°„ ëœë¤í•˜ê²Œ ìƒì„±
     {
-        int roomMaxSizeX = Mathf.Min(nodeSize.x, roomMaximumSize); // ¹æÀÌ ÀÛÀº °æ¿ì¿¡´Â ÀÚµ¿À¸·Î °ø°£ ¼Ò¸ê 
+        int roomMaxSizeX = Mathf.Min(nodeSize.x, roomMaximumSize); // ë°©ì´ ì‘ì€ ê²½ìš°ì—ëŠ” ìë™ìœ¼ë¡œ ê³µê°„ ì†Œë©¸ 
         int roomMaxSizeY = Mathf.Min(nodeSize.y, roomMaximumSize);
 
-        size.x = Random.Range(roomMinimumSize, roomMaxSizeX); //¹æ Å©±â ·£´ıÇÏ°Ô ÁöÁ¤
+        size.x = Random.Range(roomMinimumSize, roomMaxSizeX); //ë°© í¬ê¸° ëœë¤í•˜ê²Œ ì§€ì •
         size.y = Random.Range(roomMinimumSize, roomMaxSizeY);
 
-        position.x = Random.Range(0, nodeSize.x - size.x); //¹æ Å©±â¿Í ³ëµå Å©±â ±â¹İÀ¸·Î °ø°£ ÁöÁ¤
+        position.x = Random.Range(0, nodeSize.x - size.x); //ë°© í¬ê¸°ì™€ ë…¸ë“œ í¬ê¸° ê¸°ë°˜ìœ¼ë¡œ ê³µê°„ ì§€ì •
         position.y = Random.Range(0,nodeSize.y -  size.y);
 
         passage = new List<RoomConnection>();
@@ -183,11 +183,11 @@ public class BTMap
         {
             return;
         }
-        bool splitHorizontal = Random.Range(0, 2) == 0; // ¹æ ¼¼·Î·Î ³ª´©±â
+        bool splitHorizontal = Random.Range(0, 2) == 0; // ë°© ì„¸ë¡œë¡œ ë‚˜ëˆ„ê¸°
 
-        int splitSize = splitHorizontal ? Random.Range(minimalSize, node.size.y - minimalSize) : Random.Range(minimalSize, node.size.x-minimalSize);//¹æ ºĞÇÒ ÁÂÇ¥
+        int splitSize = splitHorizontal ? Random.Range(minimalSize, node.size.y - minimalSize) : Random.Range(minimalSize, node.size.x-minimalSize);//ë°© ë¶„í•  ì¢Œí‘œ
 
-        if (splitSize > minimalSize-1) // ºĞÇÒÀÌ Àß¸øµÇ¾úÀ» ¶§ ºĞÇÒ ¾Æ¿¹ X
+        if (splitSize > minimalSize-1) // ë¶„í• ì´ ì˜ëª»ë˜ì—ˆì„ ë•Œ ë¶„í•  ì•„ì˜ˆ X
         {
             if (splitHorizontal)
             {
@@ -241,12 +241,12 @@ public class BTMap
 
         foreach (MapNode node in roomNodes)
         {
-            RoomData rd = new RoomData(StageManager.Instance.stageData.MinRoomSize,StageManager.Instance.stageData.MaxRoomSize,node.size); // ¿ì¼± ¹æ Å©±â¸¦ 3~6À¸·Î ÁöÁ¤
+            RoomData rd = new RoomData(StageManager.Instance.stageData.MinRoomSize,StageManager.Instance.stageData.MaxRoomSize,node.size); // ìš°ì„  ë°© í¬ê¸°ë¥¼ 3~6ìœ¼ë¡œ ì§€ì •
             rd.SetRoomDataOnRandomValue();
 
             node.SetRoomData(rd);
 
-            node.roomData.position += node.position; // Room À§Ä¡ Àç¼³Á¤
+            node.roomData.position += node.position; // Room ìœ„ì¹˜ ì¬ì„¤ì •
 
             roomDatas.Add(node.roomData);
 
@@ -257,33 +257,33 @@ public class BTMap
 
     public void SetRoomNodes(int minRoomCount, int maxResetCount)
     {
-        int resetCount = 0; // Àç½Ãµµ È½¼ö Ä«¿îÆ® º¯¼ö Ãß°¡
+        int resetCount = 0; // ì¬ì‹œë„ íšŸìˆ˜ ì¹´ìš´íŠ¸ ë³€ìˆ˜ ì¶”ê°€
 
-        // ÃÖ´ë Àç½Ãµµ È½¼ö ³»¿¡¼­ °¡Àå ¾Æ·¡¿¡ ÀÖ´Â ³ëµåµéÀ» Ã£À½
+        // ìµœëŒ€ ì¬ì‹œë„ íšŸìˆ˜ ë‚´ì—ì„œ ê°€ì¥ ì•„ë˜ì— ìˆëŠ” ë…¸ë“œë“¤ì„ ì°¾ìŒ
         MapNode[] mapNodes = root.FindBottomNode();
 
-        // ÃÖ¼Ò ¹æ °³¼öº¸´Ù ÀûÀº ³ëµåµéÀ» Ã£°Å³ª ÃÖ´ë Àç½Ãµµ È½¼ö¸¦ ÃÊ°úÇÒ ¶§±îÁö ¹İº¹
+        // ìµœì†Œ ë°© ê°œìˆ˜ë³´ë‹¤ ì ì€ ë…¸ë“œë“¤ì„ ì°¾ê±°ë‚˜ ìµœëŒ€ ì¬ì‹œë„ íšŸìˆ˜ë¥¼ ì´ˆê³¼í•  ë•Œê¹Œì§€ ë°˜ë³µ
         while (mapNodes.Length < minRoomCount && resetCount < maxResetCount)
         {
-            Debug.Log("Node »ı¼º Àç½Ãµµ");
-            // Ãß°¡ Å½»öÀ» À§ÇØ ·çÆ® ³ëµå¿¡¼­ºÎÅÍ ´Ù½Ã Å½»ö
-            root = new MapNode(new Vector2Int(0,0),maxSize);//·çÆ® ¸Ê ÃÊ±âÈ­
-            Split(root);//ºĞÇÒ
+            Debug.Log("Node ìƒì„± ì¬ì‹œë„");
+            // ì¶”ê°€ íƒìƒ‰ì„ ìœ„í•´ ë£¨íŠ¸ ë…¸ë“œì—ì„œë¶€í„° ë‹¤ì‹œ íƒìƒ‰
+            root = new MapNode(new Vector2Int(0,0),maxSize);//ë£¨íŠ¸ ë§µ ì´ˆê¸°í™”
+            Split(root);//ë¶„í• 
             mapNodes = root.FindBottomNode();
 
-            // Àç½Ãµµ È½¼ö Áõ°¡
+            // ì¬ì‹œë„ íšŸìˆ˜ ì¦ê°€
             resetCount=0;
 
             //InfiniteLoopDetector.Run();
         }
 
-        // ÃÖ´ë Àç½Ãµµ È½¼ö¸¦ ÃÊ°úÇÏ¿© Á¾·áÇÑ °æ¿ì °æ°í ¸Ş½ÃÁö Ãâ·Â
+        // ìµœëŒ€ ì¬ì‹œë„ íšŸìˆ˜ë¥¼ ì´ˆê³¼í•˜ì—¬ ì¢…ë£Œí•œ ê²½ìš° ê²½ê³  ë©”ì‹œì§€ ì¶œë ¥
         if (resetCount == maxResetCount)
         {
-            Debug.LogWarning("ÃÖ´ë ¹İº¹ È½¼ö¸¸Å­ ¹æ »ı¼ºÀ» ½ÃµµÇß½À´Ï´Ù. ÃÖ¼Ò Å©±âº¸´Ù ÀûÀº ¹æÀÌ »ı¼ºµÉ ¼ö ÀÖ½À´Ï´Ù.");
+            Debug.LogWarning("ìµœëŒ€ ë°˜ë³µ íšŸìˆ˜ë§Œí¼ ë°© ìƒì„±ì„ ì‹œë„í–ˆìŠµë‹ˆë‹¤. ìµœì†Œ í¬ê¸°ë³´ë‹¤ ì ì€ ë°©ì´ ìƒì„±ë  ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
         }
 
-        // roomNodes ¹è¿­¿¡ °¡Àå ¾Æ·¡¿¡ ÀÖ´Â ³ëµåµéÀ» ÇÒ´ç
+        // roomNodes ë°°ì—´ì— ê°€ì¥ ì•„ë˜ì— ìˆëŠ” ë…¸ë“œë“¤ì„ í• ë‹¹
         roomNodes = mapNodes;
         Debug.Log("Node Count = "+mapNodes.Length);
     }
@@ -326,7 +326,7 @@ public class BTMap
 
         }
 
-        while (visitedRoom.Count < roomDatas.Count) // ¹æ Å½»ö ¹× ÃÖ¼Ò °æ·Î ¿¬°á ½Ãµµ
+        while (visitedRoom.Count < roomDatas.Count) // ë°© íƒìƒ‰ ë° ìµœì†Œ ê²½ë¡œ ì—°ê²° ì‹œë„
         {
             //InfiniteLoopDetector.Run();
 
@@ -379,13 +379,13 @@ public class BTMap
             return;
         }
 
-        // ¿ŞÂÊ ÇÏÀ§ Æ®¸®¸¦ Å½»öÇÏ¿© null ÇÒ´ç
+        // ì™¼ìª½ í•˜ìœ„ íŠ¸ë¦¬ë¥¼ íƒìƒ‰í•˜ì—¬ null í• ë‹¹
         ClearTree(node.left);
 
-        // ¿À¸¥ÂÊ ÇÏÀ§ Æ®¸®¸¦ Å½»öÇÏ¿© null ÇÒ´ç
+        // ì˜¤ë¥¸ìª½ í•˜ìœ„ íŠ¸ë¦¬ë¥¼ íƒìƒ‰í•˜ì—¬ null í• ë‹¹
         ClearTree(node.right);
 
-        // leaf ³ëµå¿¡ µµ´ŞÇÏ¸é null ÇÒ´ç
+        // leaf ë…¸ë“œì— ë„ë‹¬í•˜ë©´ null í• ë‹¹
         node.left = null;
         node.right = null;
     }
@@ -403,20 +403,20 @@ public class BTMap
 public class RandomMapGenerator : MonoBehaviour
 {
     [SerializeField]
-    Vector2Int mapSize; // ÀüÃ¼ ¸Ê Å©±â
+    Vector2Int mapSize; // ì „ì²´ ë§µ í¬ê¸°
 
     [SerializeField]
-    int recursiveCount; // ¹æ ºĞÇÒ Àç±Í ¼ö
+    int recursiveCount; // ë°© ë¶„í•  ì¬ê·€ ìˆ˜
     [SerializeField]
-    int minimalNodeSize; // ³ëµå ÃÖ¼Ò Å©±â(6À¸·Î ÁöÁ¤)
+    int minimalNodeSize; // ë…¸ë“œ ìµœì†Œ í¬ê¸°(6ìœ¼ë¡œ ì§€ì •)
     [SerializeField]
-    int minimalRoomSize; // ÃÖ¼Ò ¹æ Å©±â
+    int minimalRoomSize; // ìµœì†Œ ë°© í¬ê¸°
     [SerializeField]
-    int maximalRoomSize; // ÃÖ´ë ¹æ Å©±â
+    int maximalRoomSize; // ìµœëŒ€ ë°© í¬ê¸°
     [SerializeField]
-    int minimalRoomCount; // ÃÖ¼Ò ¹æ ¼ö
+    int minimalRoomCount; // ìµœì†Œ ë°© ìˆ˜
     [SerializeField]
-    int maxSetRoomCount; // ÃÖ´ë ¹æ ¼ö(¹ÌÁ¤)
+    int maxSetRoomCount; // ìµœëŒ€ ë°© ìˆ˜(ë¯¸ì •)
 
     [SerializeField]
     int maxFloor;
@@ -428,7 +428,7 @@ public class RandomMapGenerator : MonoBehaviour
     void Start()
     {
         map = new BTMap(mapSize, minimalRoomCount, minimalNodeSize,recursiveCount);
-        Debug.Log("ºĞÇÒµÈ ¹æ ¼ö: "+map.roomNodes.Length);
+        Debug.Log("ë¶„í• ëœ ë°© ìˆ˜: "+map.roomNodes.Length);
         foreach(MapNode node in map.roomNodes)
         {
             Debug.Log(node.position +" "+ node.size);

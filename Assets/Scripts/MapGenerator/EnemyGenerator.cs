@@ -56,23 +56,23 @@ public class EnemyGenerator : MonoBehaviour
 
     public bool ThereIsObject(Vector3Int position)
     {
-        // ÇØ´ç À§Ä¡¿¡¼­ °ãÄ¡´Â ¸ğµç collider¸¦ °¡Á®¿É´Ï´Ù.
+        // í•´ë‹¹ ìœ„ì¹˜ì—ì„œ ê²¹ì¹˜ëŠ” ëª¨ë“  colliderë¥¼ ê°€ì ¸ì˜µë‹ˆë‹¤.
         Collider2D[] colliders = Physics2D.OverlapPointAll(tilemap.GetCellCenterWorld(position));
 
-        // °¡Á®¿Â colliders¸¦ ¹İº¹ÇÏ¿© ¾ÆÀÌÅÛÀÌ ÀÖ´ÂÁö È®ÀÎÇÕ´Ï´Ù.
+        // ê°€ì ¸ì˜¨ collidersë¥¼ ë°˜ë³µí•˜ì—¬ ì•„ì´í…œì´ ìˆëŠ”ì§€ í™•ì¸í•©ë‹ˆë‹¤.
         foreach (Collider2D collider in colliders)
         {
-            // collider¿¡ ¿¬°áµÈ GameObject¸¦ È®ÀÎÇÕ´Ï´Ù.
+            // colliderì— ì—°ê²°ëœ GameObjectë¥¼ í™•ì¸í•©ë‹ˆë‹¤.
             GameObject obj = collider.gameObject;
 
-            // ¾ÆÀÌÅÛÀÎÁö È®ÀÎÇÕ´Ï´Ù. ¸¸¾à ¾ÆÀÌÅÛÀÌ¶ó¸é true¸¦ ¹İÈ¯ÇÕ´Ï´Ù.
+            // ì•„ì´í…œì¸ì§€ í™•ì¸í•©ë‹ˆë‹¤. ë§Œì•½ ì•„ì´í…œì´ë¼ë©´ trueë¥¼ ë°˜í™˜í•©ë‹ˆë‹¤.
             if (obj==null || !obj.CompareTag("Ground"))
             {
                 return true;
             }
         }
 
-        // ¾ÆÀÌÅÛÀÌ ¾ø´Â °æ¿ì¿¡´Â false¸¦ ¹İÈ¯ÇÕ´Ï´Ù.
+        // ì•„ì´í…œì´ ì—†ëŠ” ê²½ìš°ì—ëŠ” falseë¥¼ ë°˜í™˜í•©ë‹ˆë‹¤.
         return false;
 
     }
